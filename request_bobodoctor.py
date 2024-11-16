@@ -56,9 +56,21 @@ def bobodoctor():
 
 def googlemap_mark(bobodoctor_list):
     driver = undetected_chromedriver.Chrome()
-    driver.get("https://www.google.com/maps/d/u/0/edit?mid=1kBdz_PMqOs92x4aslfEVPo6iJg3Pihg&ll=24.053457791375514%2C120.104023&z=7")
+    driver.get("https://www.google.com/maps/d/u/0/edit?mid=1ZNQdT50bIrPf01aDjnNvWf5RahDaBHA&ll=24.053457791375514%2C120.104023&z=7")
     driver.maximize_window()
-    wait = WebDriverWait(driver, 30)
+    wait = WebDriverWait(driver, 10)
+    # 使用 id 定位
+
+    email_input = wait.until(EC.presence_of_element_located((By.ID, "identifierId")))
+    # 輸入電子郵件地址
+    email_input.send_keys("stougen002@gmail.com")
+    email_input.send_keys(Keys.ENTER)
+    # 使用 id 定位（假設你可以找到 id，這裡用 name 作為示例）
+    time.sleep(3)
+    password_input = wait.until(EC.presence_of_element_located((By.NAME, "Passwd")))
+    # 輸入密碼
+    password_input.send_keys("sarkhanbolas")
+    password_input.send_keys(Keys.ENTER)
     try:
         map_title = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, '.i4ewOd-r4nke[data-tooltip="未命名的地圖"]')))
         time.sleep(1)
@@ -68,32 +80,37 @@ def googlemap_mark(bobodoctor_list):
         input_element.send_keys(Keys.ENTER)
     except:
         pass
-
+    
     for i in range(1,len(bobodoctor_list)):
-        print("%s"%bobodoctor_list[i][0]+"%s"%bobodoctor_list[i][1])
+        print(bobodoctor_list[i])
         search_input = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "tk3N6e-y4JFTd")))
-        time.sleep(1)
+        time.sleep(3)
         # 操作該元素，例如輸入搜尋關鍵字並提交
         search_input.send_keys("%s"%bobodoctor_list[i][0]+"%s"%bobodoctor_list[i][1])
         search_input.send_keys(Keys.ENTER)
         time.sleep(1)
         # 找到 id="addtomap-button" 的元素
-        add_to_map_button = wait.until(EC.element_to_be_clickable((By.ID, "addtomap-button")))
-        time.sleep(0.5)
+        try:
+            add_to_map_button = wait.until(EC.element_to_be_clickable((By.ID, "addtomap-button")))
+        except:
+            continue
+        zzz()
         # 使用 JavaScript 點擊
         driver.execute_script("arguments[0].click();", add_to_map_button)
         edit_button = wait.until(EC.element_to_be_clickable((By.ID, "map-infowindow-edit-button")))
-        time.sleep(0.5)
+        zzz()
         driver.execute_script("arguments[0].click();", edit_button)
         editable_div = wait.until(EC.presence_of_element_located((By.ID, "map-infowindow-attr-說明-value")))
-        time.sleep(0.5)
+        zzz()
         editable_div.send_keys(" " + Keys.SHIFT + Keys.RETURN)
         if bobodoctor_list[i][2] == "":
             bobodoctor_list[i][2] = "未知"
-            time.sleep(1)
+            zzz()
         editable_div.send_keys("%s %s %s"%(bobodoctor_list[i][2],bobodoctor_list[i][3],bobodoctor_list[i][4]))
         editable_div.send_keys(Keys.RETURN)
     while True:
         time.sleep(1)
+def zzz():
+    time.sleep(1)
 googlemap_mark(bobodoctor())
 #print(bobodoctor())
