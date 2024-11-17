@@ -35,7 +35,7 @@
 - [波蘭醫師一覽表(純文字版, 以利google搜尋到姓名)](https://popolist999.blogspot.com/2021/06/google.html)
 - [google我的地圖](https://www.google.com/maps/d/u/0/?hl=zh-TW)
 ![image][https://github.com/trigo941005/bobodoctor/blob/main/bobodoctor_list.png]
-![image](https://github.com/trigo941005/bobodoctor/blob/main/Google_My_Map.png)
+![image][(https://github.com/trigo941005/bobodoctor/blob/main/Google_My_Map.png)]
 ## 完成作品
 
 ![image](https://github.com/trigo941005/selenium_houseprice/blob/main/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-10-17%20141314.png)
