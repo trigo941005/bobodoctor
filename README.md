@@ -38,4 +38,7 @@
 ![image](https://github.com/trigo941005/bobodoctor/blob/main/Google_My_Map.png)
 ## 完成作品
 
-![image](https://github.com/trigo941005/selenium_houseprice/blob/main/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-10-17%20141314.png)
+![image](https://github.com/trigo941005/bobodoctor/blob/main/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-11-17%20182210.png)
+## 作品連結
+
+https://www.google.com/maps/d/u/0/viewer?mid=1U3WanOfN4Lazqj9ww9S20azo0ZghhDM&ll=23.727414437580222%2C121.89441313440311&z=7
