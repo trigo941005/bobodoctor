@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import time
 import undetected_chromedriver
+import data
 
 def replace_non_bmp(text, replacement='?'):
     return ''.join(c if ord(c) <= 0xFFFF else replacement for c in text)
@@ -56,7 +57,7 @@ def bobodoctor():
 
 
 def googlemap_mark(bobodoctor_list):
-    url = "https://www.google.com/maps/d/u/0/edit?mid=1U3WanOfN4Lazqj9ww9S20azo0ZghhDM&ll=24.057771183282433%2C120.104023&z=7"
+    url = data.data()[2]
     driver = undetected_chromedriver.Chrome()
     driver.get(url)
     driver.maximize_window()
@@ -65,13 +66,13 @@ def googlemap_mark(bobodoctor_list):
 
     email_input = wait.until(EC.presence_of_element_located((By.ID, "identifierId")))
     # 輸入電子郵件地址
-    email_input.send_keys("stougen002@gmail.com")
+    email_input.send_keys(data.data()[0])
     email_input.send_keys(Keys.ENTER)
     # 使用 id 定位（假設你可以找到 id，這裡用 name 作為示例）
     time.sleep(5)
     password_input = wait.until(EC.presence_of_element_located((By.NAME, "Passwd")))
     # 輸入密碼
-    password_input.send_keys("sarkhanbolas")
+    password_input.send_keys(data.data()[1])
     password_input.send_keys(Keys.ENTER)
     try:
         map_title = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, '.i4ewOd-r4nke[data-tooltip="未命名的地圖"]')))
@@ -83,7 +84,7 @@ def googlemap_mark(bobodoctor_list):
     except:
         pass
         
-    for i in range(1312, len(bobodoctor_list)):
+    for i in range(1, len(bobodoctor_list)):
         # 替換處理
         bobodoctor_list[i] = [replace_non_bmp(item) for item in bobodoctor_list[i]]
 
