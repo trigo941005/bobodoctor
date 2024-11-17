@@ -4,12 +4,12 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import time
 import undetected_chromedriver
 
+def replace_non_bmp(text, replacement='?'):
+    return ''.join(c if ord(c) <= 0xFFFF else replacement for c in text)
 
 
 def bobodoctor():
@@ -56,7 +56,7 @@ def bobodoctor():
 
 
 def googlemap_mark(bobodoctor_list):
-    url = "https://www.google.com/maps/d/u/0/edit?mid=1SBAFBsZRFyUM4H3hMbLsum7w8reGVDQ&ll=24.057771183282433%2C120.104023&z=7"
+    url = "https://www.google.com/maps/d/u/0/edit?mid=1U3WanOfN4Lazqj9ww9S20azo0ZghhDM&ll=24.057771183282433%2C120.104023&z=7"
     driver = undetected_chromedriver.Chrome()
     driver.get(url)
     driver.maximize_window()
@@ -68,7 +68,7 @@ def googlemap_mark(bobodoctor_list):
     email_input.send_keys("stougen002@gmail.com")
     email_input.send_keys(Keys.ENTER)
     # 使用 id 定位（假設你可以找到 id，這裡用 name 作為示例）
-    time.sleep(3)
+    time.sleep(5)
     password_input = wait.until(EC.presence_of_element_located((By.NAME, "Passwd")))
     # 輸入密碼
     password_input.send_keys("sarkhanbolas")
@@ -83,10 +83,15 @@ def googlemap_mark(bobodoctor_list):
     except:
         pass
         
-    for i in range(1, len(bobodoctor_list)):
+    for i in range(1312, len(bobodoctor_list)):
+        # 替換處理
+        bobodoctor_list[i] = [replace_non_bmp(item) for item in bobodoctor_list[i]]
+
         retry_count = 0  # 初始化重試計數
         while True:  # 開始重試迴圈
             try:
+                if bobodoctor_list[i][1] == "":
+                    break
                 if "學" in bobodoctor_list[i][1] and "醫" not in bobodoctor_list[i][1] and "診所" not in bobodoctor_list[i][1]:
                     break
                 print(f"處理第 {i} 個標記: {bobodoctor_list[i]}")
@@ -138,17 +143,11 @@ def googlemap_mark(bobodoctor_list):
                 print(f"第 {i} 個標記處理出錯: {e}，重試中 (第 {retry_count} 次)...")
                 if retry_count > 5:  # 超過5次重試就跳過該標記
                     print(f"第 {i} 個標記失敗，已跳過。")
-                    break
+                    while True:
+                        time.sleep(1)
                 time.sleep(3)  # 延遲後重新嘗試
     while True:
         time.sleep(1)
 def zzz():
     time.sleep(1)
 googlemap_mark(bobodoctor())
-"""return_list = bobodoctor()
-count = 0
-for i in range(len(return_list)):
-    if "學" in return_list[i][1] and "醫" not in return_list[i][1] and "診所" not in return_list[i][1]:
-        print(return_list[i])
-        count+=1
-print(count)"""
