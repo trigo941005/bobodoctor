@@ -2,7 +2,7 @@
 
 ## 專案說明
 
-此專案使用 Python 的 request 模組，爬取波波醫生名單。 使用selenium打開google我的地圖，將爬取到的名單製作成地標放入google我的地圖。
+此專案使用 Python 的 requests 模組，爬取波波醫生名單。 使用 Selenium 打開 Google 我的地圖，將爬取到的名單製作成地標放入Google我的地圖。
 
 ## 技術關鍵字
 
@@ -26,9 +26,9 @@
 
 - Python 3.9.13
 - Selenium 4.24.0
-- request 2.32.3
+- requests 2.32.3
 - beautifulsoup4 4.12.3
-- 3.5.5
+- undetected_chromedriver 3.5.5
 
 ## 資料來源
 
