@@ -144,8 +144,6 @@ def googlemap_mark(bobodoctor_list):
                 print(f"第 {i} 個標記處理出錯: {e}，重試中 (第 {retry_count} 次)...")
                 if retry_count > 5:  # 超過5次重試就跳過該標記
                     print(f"第 {i} 個標記失敗，已跳過。")
-                    while True:
-                        time.sleep(1)
                 time.sleep(3)  # 延遲後重新嘗試
     while True:
         time.sleep(1)
