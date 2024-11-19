@@ -52,7 +52,6 @@ def bobodoctor():
             print("未找到任何符合的資料。")
     else:
         print(f"無法取得網頁內容，狀態碼：{response.status_code}")
-    print(return_list)
     return return_list
 
 
@@ -149,4 +148,10 @@ def googlemap_mark(bobodoctor_list):
         time.sleep(1)
 def zzz():
     time.sleep(1)
-googlemap_mark(bobodoctor())
+#googlemap_mark(bobodoctor())
+data_list = bobodoctor()
+unique_data = []
+for item in data_list:                      #將重複資料刪除
+    if item not in unique_data:
+        unique_data.append(item)
+googlemap_mark(unique_data)
